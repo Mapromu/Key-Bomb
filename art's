@@ -1,0 +1,36 @@
+gameoverTELA100 : string  "         ,;~'             '~;,        "
+gameoverTELA101 : string  "       ,;                     ;,      "
+gameoverTELA102 : string  "      ;                         ;     " 
+gameoverTELA103 : string  "     ,'                         ',    " 
+gameoverTELA104 : string  "    ,;                           ;,   " 
+gameoverTELA105 : string  "    ; ;      .           .      ; ;   " 
+gameoverTELA106 : string  "    | ;   ______       ______   ; |   " 
+gameoverTELA107 : string  "    |  `/~      ~ . ~     ~\\ ´  |   " 
+gameoverTELA108 : string  "    |  ~  ,-~~~^~, | ,~^~~~-,  ~  |   " 
+gameoverTELA109 : string  "     |   |        }:{        |   |    " 
+gameoverTELA110 : string  "     |   l       / | \       !   |    " 
+gameoverTELA111 : string  "     .~  (__,.--  .^.  --.,__)  ~.    " 
+gameoverTELA112 : string  "     |     ---;' / | \\ `;---     |    " 
+gameoverTELA113 : string  "      \__.       \\/^\/       .__/     " 
+gameoverTELA114 : string  "      V| \\                 / |V       " 
+gameoverTELA115 : string  "       | |T~\___!___!___/~T| |        " 
+gameoverTELA116 : string  "       | |`IIII_I_I_I_IIII'| |        " 
+gameoverTELA117 : string  "       |  \\,III I I I III,/  |        " 
+gameoverTELA118 : string  "        \\   `~~~~~~~~~~'    /         " 
+gameoverTELA119 : string  "          \\   .       .   /           " 
+gameoverTELA120 : string  "            \\.    ^    ./             " 
+gameoverTELA121 : string  "              ^~~~^~~~^               " 
+
+
+
+
+
+
+                                                                                 
+gameoverTELA122 : string  "`YMM'   `MM' .g8II8q. `7MMF'   `7MF'    `7MMF'     A     `7MF'`7MMF'`7MN.   `7MF' " 
+gameoverTELA123 : string  "  VMA   ,V .dP'    `YM. MM       M        `MA     ,MA     ,V    MM    MMN.    M    " 
+gameoverTELA124 : string  "   VMA ,V  dM'      `MM MM       M         VM:   ,VVM:   ,V     MM    M YMb   M      " 
+gameoverTELA125 : string  "    VMMP   MM        MM MM       M          MM.  M' MM.  M'     MM    M  `MN. M    " 
+gameoverTELA125 : string  "     MM    MM.      ,MP MM       M          `MM A'  `MM A'      MM    M   `MM.M     " 
+gameoverTELA126 : string  "     MM    `Mb.    ,dP' YM.     ,M           :MM;    :MM;       MM    M     YMM    "   
+gameoverTELA127 : string  "   .JMML.    `IbmmdI'    `bmmmmdI'            VF      VF      .JMML..JML.    YM    " 
