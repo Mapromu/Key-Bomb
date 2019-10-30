@@ -54,7 +54,7 @@ tela1_mensage27: string "	       WILL, MARIN & KEL			"
 tela1_mensage28: string "										"
 tela1_mensage29: string "										"
 
-tela1_linhas: string #30
+tela1_linhas: var #30
 	static tela1_linhas + #0, #tela1_mensagem0
 	static tela1_linhas + #1, #tela1_mensagem
 	static tela1_linhas + #2, #tela1_mensage2
@@ -92,7 +92,7 @@ main:
 	loadn r0, #0 ; lugar na tela pra começar a printar
 	loadn r1, #0 ; mensagem
 	loadn r2, #2816 ; cor do item
-	loadn r3, #40 ;tamanho da tela
+	loadn r3, #1199 ;tamanho da tela
 	loadn r4, #tela1_linhas ;mensagem do vetor
 	loadn r5, #0 ;contador
 	loadn r6, #0 ; guarda a mensagem + o contador
@@ -105,7 +105,8 @@ main:
 		;add r4, #tela1_linhas, #inc_vetor
 		add r3, r0, r3
 		add r6, r5, r4
-		loadn r1, r6
+		loadi r1, r6
+		breakp
 		call printaTelaInicio
 		add r0, r0, r3
 		inc r5
@@ -137,7 +138,7 @@ printaTelaInicio:
 	jeq printaTelaInicio_loopsair
 	add r4, r2, r4
 	outchar r4, r0
-	call Delay
+	;call Delay
 	inc r0
 	inc r1
 	jmp printaTelaInicio_loop
