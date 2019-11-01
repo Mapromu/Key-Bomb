@@ -23,36 +23,36 @@
 
 jmp main
 
-tela1_mensagem0:string  "      APERTE ESPAÇO PARA CONTINUAR     "
-tela1_mensagem: string  "        Bem vindo ao campo minado      "
-tela1_mensage2: string  "	 		  XUPA FEDERAL 	    	    "
-tela1_mensage3: string  "	              \\|/            	    "
-tela1_mensage4: string  "	            `--+--'					"
-tela1_mensage5: string  "	              /|\\	 				"
-tela1_mensage6: string  "	             ' | '					"
-tela1_mensage7: string  "	               |					"
-tela1_mensage8: string  "	               |					"
-tela1_mensage9: string  "	           ,--'#`--.  				"
-tela1_mensage10: string "	           |#######|				"
-tela1_mensage11: string "	        _.-'#######`-._				"
-tela1_mensage12: string "	     ,-'###############`-.			"
-tela1_mensage13: string "	   ,'#####################`,		"
-tela1_mensage14: string "	  /#########################\\    	"
-tela1_mensage15: string "	 |###########################|  	"
-tela1_mensage16: string "	|#############################| 	"
-tela1_mensage17: string "	|#############################| 	"
-tela1_mensage18: string "	|#############################| 	"
-tela1_mensage19: string "	|#############################| 	"
-tela1_mensage20: string "	 |###########################|  	"
-tela1_mensage21: string "	 \\#########################/   	"
-tela1_mensage22: string "	   `.#####################,'    	"
-tela1_mensage23: string "	     `._###############_,'      	"
-tela1_mensage24: string "	        `--..#####..--'    			"
-tela1_mensage25: string "										"
-tela1_mensage26: string "										"
-tela1_mensage27: string "	       WILL, MARIN & KEL			"
-tela1_mensage28: string "										"
-tela1_mensage29: string "										"
+tela1_mensagem0:string  "      APERTE ESPACO PARA CONTINUAR      "
+tela1_mensagem: string  "        BEM VINDO AO CAMPO MINADO       "
+tela1_mensage2: string  "             XUPA FEDERAL               "
+tela1_mensage3: string  "                 \\|/                    "
+tela1_mensage4: string  "               `--+--'                  "
+tela1_mensage5: string  "                 /|\\                    "
+tela1_mensage6: string  "                ' | '                   "
+tela1_mensage7: string  "                  |                     "
+tela1_mensage8: string  "                  |                     "
+tela1_mensage9: string  "              ,--'#`--.                 "
+tela1_mensage10: string "              |#######|                 "
+tela1_mensage11: string "           _.-'#######`-._              "
+tela1_mensage12: string "        ,-'###############`-.           "
+tela1_mensage13: string "      ,'#####################`,         "
+tela1_mensage14: string "      /#########################\\       "
+tela1_mensage15: string "    |###########################|       "
+tela1_mensage16: string "   |#############################|      "
+tela1_mensage17: string "   |#############################|      "
+tela1_mensage18: string "   |#############################|      "
+tela1_mensage19: string "   |#############################|      "
+tela1_mensage20: string "    |###########################|       "
+tela1_mensage21: string "     \\#########################/        "
+tela1_mensage22: string "      `.#####################,'         "
+tela1_mensage23: string "        `._###############_,'           "
+tela1_mensage24: string "           `--..#####..--'              "
+tela1_mensage25: string "                                        "
+tela1_mensage26: string "                                        "
+tela1_mensage27: string "          WILL, MARIN & KEL             "
+tela1_mensage28: string "                                        "
+tela1_mensage29: string "                                        "
 
 tela1_linhas: var #30
 	static tela1_linhas + #0, #tela1_mensagem0
@@ -88,71 +88,69 @@ tela1_linhas: var #30
 	
 ;inc_vetor: var #0
 
+mensagem2 : string "Ola Mundo!"
+
+;---- Inicio do Programa Principal -----
 main:
-	loadn r0, #0 ; lugar na tela pra começar a printar
-	loadn r1, #0 ; mensagem
-	loadn r2, #2816 ; cor do item
-	loadn r3, #1199 ;tamanho da tela
-	loadn r4, #tela1_linhas ;mensagem do vetor
-	loadn r5, #0 ;contador
-	loadn r6, #0 ; guarda a mensagem + o contador
+	loadn r0, #0			; Posicao na tela onde a mensagem sera' escrita
+	loadn r1, #tela1_mensagem0	; Carrega r1 com o endereco do vetor que contem a mensagem
+	loadn r2, #2816			; Seleciona a COR da Mensagem
+	loadn r3, #1200
+	loadn r4, #40
 	
-	;call printaTelaInicio
-	;add r0, r0, r3
-	;loadn r1, #tela1_mensagem
-	
-	loop_printa_tela1:
-		;add r4, #tela1_linhas, #inc_vetor
-		add r3, r0, r3
-		add r6, r5, r4
-		loadi r1, r6
-		breakp
-		call printaTelaInicio
-		add r0, r0, r3
-		inc r5
-		cmp r0, r3
-		jeq loop_printa_tela1_sair
-		jmp loop_printa_tela1
-		
-	loop_printa_tela1_sair:
-		 
-		
-		
-	
-	
-	halt
-	
-	
-printaTelaInicio:
-	push r0
-	push r1
-	push r2	
-	push r3
-	
-	loadn r3, #40
-	add r3, r0, r3
-	
-	printaTelaInicio_loop:
-	loadi r4, r1
-	cmp r0, r3
-	jeq printaTelaInicio_loopsair
-	add r4, r2, r4
-	outchar r4, r0
-	;call Delay
-	inc r0
+	loop_main:
+	call Imprimestr   	; r0 = Posicao da tela que o primeiro caractere da mensagem sera' impresso
+	cmp r0, r3					; r1 = endereco onde comeca a mensagem
+	jeq loop_main_sair
+	add r0, r0, r4
 	inc r1
-	jmp printaTelaInicio_loop
+	add r1, r1, r4
+	jmp loop_main
 	
+						; r2 = cor da mensagem.   
+						; Obs: a mensagem sera' impressa ate' encontrar "/0"
+
+	loop_main_sair:
+	halt	; Fim do programa - Para o Processador
 	
-	printaTelaInicio_loopsair:
+;---- Fim do Programa Principal -----
+	
+;---- Inicio das Subrotinas -----
+	
+Imprimestr:		;  Rotina de Impresao de Mensagens:    
+				; r0 = Posicao da tela que o primeiro caractere da mensagem sera' impresso
+				; r1 = endereco onde comeca a mensagem
+				; r2 = cor da mensagem
+				; Obs: a mensagem sera' impressa ate' encontrar "/0"
+				
+;---- Empilhamento: protege os registradores utilizados na subrotina na pilha para preservar seu valor				
+	push r0	; Posicao da tela que o primeiro caractere da mensagem sera' impresso
+	push r1	; endereco onde comeca a mensagem
+	push r2	; cor da mensagem
+	push r3	; Criterio de parada
+	push r4	; Recebe o codigo do caractere da Mensagem
+	
+	loadn r3, #'\0'	; Criterio de parada
+
+ImprimestrLoop:	
+	loadi r4, r1		; aponta para a memoria no endereco r1 e busca seu conteudo em r4
+	cmp r4, r3			; compara o codigo do caractere buscado com o criterio de parada
+	jeq ImprimestrSai	; goto Final da rotina
+	add r4, r2, r4		; soma a cor (r2) no codigo do caractere em r4
+	outchar r4, r0		; imprime o caractere cujo codigo está em r4 na posicao r0 da tela
+	inc r0				; incrementa a posicao que o proximo caractere sera' escrito na tela
+	inc r1				; incrementa o ponteiro para a mensagem na memoria
+	jmp ImprimestrLoop	; goto Loop
+	
+ImprimestrSai:	
+;---- Desempilhamento: resgata os valores dos registradores utilizados na Subrotina da Pilha
+	pop r4	
 	pop r3
 	pop r2
 	pop r1
 	pop r0
-	
 	rts
-	
-	
+
 Delay:
 	push r0 
 	push r2 
