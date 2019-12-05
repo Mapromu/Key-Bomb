@@ -50,9 +50,44 @@ tela1_mensage23: string "        `._###############_,'           "
 tela1_mensage24: string "           `--..#####..--'              "
 tela1_mensage25: string "                                        "
 tela1_mensage26: string "                                        "
-tela1_mensage27: string "          WILL, MARIN & KEL             "
+tela1_mensage27: string "           WILL, MARIN & KEL            "
 tela1_mensage28: string "                                        "
 tela1_mensage29: string "                                        "
+
+
+
+
+
+tela2_mensagem0:string  "                                        "
+tela2_mensagem: string  "        BEM VINDO AO CAMPO MINADO       "
+tela2_mensage2: string  "             XUPA FEDERAL               "
+tela2_mensage3: string  "                                        "
+tela2_mensage4: string  "                                        "
+tela2_mensage5: string  "                                        "
+tela2_mensage6: string  "                                        "
+tela2_mensage7: string  "                                        "
+tela2_mensage8: string  "                                        "
+tela2_mensage9: string  "                                        "
+tela2_mensage10: string "                                        "
+tela2_mensage11: string "          Q W E R T Y U I O P           "
+tela2_mensage12: string "                                        "
+tela2_mensage13: string "           A S D F G H J K L            "
+tela2_mensage14: string "                                        "
+tela2_mensage15: string "            Z X C V B N M               "
+tela2_mensage16: string "                                        "
+tela2_mensage17: string "                                        "
+tela2_mensage18: string "                                        "
+tela2_mensage19: string "                                        "
+tela2_mensage20: string "                                        "
+tela2_mensage21: string "                                        "
+tela2_mensage22: string "                                        "
+tela2_mensage23: string "                                        "
+tela2_mensage24: string "                                        "
+tela2_mensage25: string "                                        "
+tela2_mensage26: string "                                        "
+tela2_mensage27: string "           WILL, MARIN & KEL            "
+tela2_mensage28: string "                                        "
+tela2_mensage29: string "                                        "
 
 tela1_linhas: var #30
 	static tela1_linhas + #0, #tela1_mensagem0
@@ -92,10 +127,43 @@ mensagem2 : string "Ola Mundo!"
 
 ;---- Inicio do Programa Principal -----
 main:
+	loadn r0, #113
+	loadn r1, #32
+
+	call printa_tela1
+	volta:
+	inchar r0
+	cmp r0 , r1	
+	jeq printa_tela2_jmp
+	jmp volta
+	
+	printa_tela2_jmp:
+	call printa_tela2
+	
+	call jogo
+	
+	
+						; r2 = cor da mensagem.   
+						; Obs: a mensagem sera' impressa ate' encontrar "/0"
+
+	halt	; Fim do programa - Para o Processador
+	
+;---- Fim do Programa Principal -----
+	
+;---- Inicio das Subrotinas -----
+
+printa_tela1:
+	push r0
+	push r1
+	push r2
+	push r3
+	push r4
+	
+
 	loadn r0, #0			; Posicao na tela onde a mensagem sera' escrita
 	loadn r1, #tela1_mensagem0	; Carrega r1 com o endereco do vetor que contem a mensagem
 	loadn r2, #2816			; Seleciona a COR da Mensagem
-	loadn r3, #1200
+	loadn r3, #1160
 	loadn r4, #40
 	
 	loop_main:
@@ -107,15 +175,194 @@ main:
 	add r1, r1, r4
 	jmp loop_main
 	
-						; r2 = cor da mensagem.   
-						; Obs: a mensagem sera' impressa ate' encontrar "/0"
-
 	loop_main_sair:
-	halt	; Fim do programa - Para o Processador
+	pop r4
+	pop r3
+	pop r2
+	pop r1
+	pop r0
 	
-;---- Fim do Programa Principal -----
+	rts
 	
-;---- Inicio das Subrotinas -----
+printa_tela2:
+	push r0
+	push r1
+	push r2
+	push r3
+	push r4
+	
+
+	loadn r0, #0			; Posicao na tela onde a mensagem sera' escrita
+	loadn r1, #tela2_mensagem0	; Carrega r1 com o endereco do vetor que contem a mensagem
+	loadn r2, #2816			; Seleciona a COR da Mensagem
+	loadn r3, #1160
+	loadn r4, #40
+	
+	loop_tela2:
+	call Imprimestr   	; r0 = Posicao da tela que o primeiro caractere da mensagem sera' impresso
+	cmp r0, r3					; r1 = endereco onde comeca a mensagem
+	jeq loop_tela2_sair
+	add r0, r0, r4
+	inc r1
+	add r1, r1, r4
+	jmp loop_tela2
+	
+	loop_tela2_sair:
+	pop r4
+	pop r3
+	pop r2
+	pop r1
+	pop r0
+	
+	rts
+	
+jogo:
+	push r0
+	push r1
+	
+	jogo_volta:
+	inchar r0
+	loadn r1, #113
+	cmp r0, r1
+	ceq apertou_q
+	
+	
+	loadn r1, #119
+	cmp r0, r1
+	ceq apertou_w
+
+	
+	loadn r1, #101
+	cmp r0, r1
+	ceq apertou_e
+	
+	
+	loadn r1, #114
+	cmp r0, r1
+	jeq sair ; R
+	
+	
+	loadn r1, #116
+	cmp r0, r1
+	ceq apertou_t
+	
+	
+	loadn r1, #118
+	cmp r0, r1
+	ceq apertou_y
+	
+	
+	loadn r1, #118
+	cmp r0, r1
+	jeq sair ; U
+	
+	
+	loadn r1, #118
+	cmp r0, r1
+	ceq apertou_i
+	
+	
+	loadn r1, #118
+	cmp r0, r1
+	ceq apertou_o
+	
+	
+	loadn r1, #118
+	cmp r0, r1
+	jeq sair ;P
+	
+	
+	loadn r1, #118
+	cmp r0, r1
+	ceq apertou_a
+	
+	
+	loadn r1, #118
+	cmp r0, r1
+	jeq sair ; S
+	
+	
+	loadn r1, #118
+	cmp r0, r1
+	ceq apertou_d
+	
+	
+	loadn r1, #118
+	cmp r0, r1
+	jeq sair ; F
+	
+	
+	loadn r1, #118
+	cmp r0, r1
+	ceq apertou_g
+	
+	
+	loadn r1, #118
+	cmp r0, r1
+	jeq sair ; H
+	
+	
+	loadn r1, #118
+	cmp r0, r1
+	ceq apertou_j
+	
+	
+	loadn r1, #118
+	cmp r0, r1
+	jeq sair ; K
+	
+	
+	loadn r1, #118
+	cmp r0, r1
+	ceq apertou_l
+	
+	
+	loadn r1, #118
+	cmp r0, r1
+	ceq apertou_z
+	
+	
+	loadn r1, #118
+	cmp r0, r1
+	jeq sair ; X
+	
+	
+	loadn r1, #118
+	cmp r0, r1
+	jeq sair ; C
+	
+	
+	loadn r1, #118
+	cmp r0, r1
+	ceq apertou_v
+	
+	
+	loadn r1, #118
+	cmp r0, r1
+	ceq apertou_b
+	
+	
+	loadn r1, #118
+	cmp r0, r1
+	jeq sair ; N
+	
+	
+	loadn r1, #118
+	cmp r0, r1
+	ceq apertou_m
+	
+	jmp jogo_volta
+	
+	sair:
+	
+	;call tela_perdeu
+	pop r1
+	pop r0
+	
+	rts
+	
+		
+	
 	
 Imprimestr:		;  Rotina de Impresao de Mensagens:    
 				; r0 = Posicao da tela que o primeiro caractere da mensagem sera' impresso
@@ -168,5 +415,100 @@ Delay:
 	pop r2
 	pop r0
 	
+	rts	
+	
+apertou_q:
+	push r5
+	push r6
+	
+	loadn r6, #412
+	loadn r5, #3889
+	outchar r5, r6
+
+	pop r6
+	pop r5
+	rts
+
+apertou_w:
+	
+
+	rts
+
+apertou_e:
+
+
 	rts
 	
+apertou_t:
+
+
+	rts
+	
+apertou_y:
+	
+	
+	rts
+	
+apertou_i:
+
+
+	rts
+	
+apertou_o:
+
+
+	rts
+	
+apertou_a:
+
+
+	rts
+	
+apertou_d:
+
+
+	rts
+	
+apertou_g:
+
+
+	rts
+	
+apertou_j:
+
+
+	rts
+	
+apertou_l:
+
+
+	rts
+	
+apertou_z:
+
+
+	rts
+	
+apertou_v:
+
+
+	rts
+	
+apertou_b:
+
+
+	rts
+apertou_m:
+
+
+	rts
+
+
+
+
+
+
+
+
+
+
